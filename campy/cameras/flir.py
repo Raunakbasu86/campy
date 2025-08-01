@@ -218,7 +218,12 @@ def ConfigureCustomImageSettings(camera, cam_params):
 		settingsConfig = True
 
 		camera.AcquisitionMode.SetValue(PySpin.AcquisitionMode_Continuous)
-		camera.BalanceWhiteAuto.SetValue(PySpin.BalanceWhiteAuto_Off)
+
+		# White Balance not supported for monochrome cameras
+		try:
+			camera.BalanceWhiteAuto.SetValue(PySpin.BalanceWhiteAuto_Off)
+		except:
+			print('Could not set white balance')
 
 		cam_params = ConfigureFrameWidth(camera, cam_params)
 		cam_params = ConfigureFrameHeight(camera, cam_params)
