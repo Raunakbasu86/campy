@@ -4,10 +4,11 @@
 ## Hardware/Software Recommendations
 - Basler and/or FLIR machine vision camera(s)
 - Windows, IOS, or Linux system
-- (Recommended) Server/workstation class CPUs with >=4 memory channels (e.g., AMD Threadripper 3995WX, Intel i9-10900X) can increase bandwidth over consumer CPUs with 2 memory channels (more cameras, higher resolution/frame rate)
-- (Optional) USB expansion card with 1 host controller per camera (e.g., Basler USB 3.0, 4X PCIe, 4X HC, 4 Ports PN# 2000036233)
-- (Optional) Hardware encoder using AMD, Intel, or Nvidia GPU (see https://developer.nvidia.com/video-encode-decode-gpu-support-matrix)
-- (Optional) Arduino/Teensy/Pi microcontroller for syncing cameras and other devices
+- (Recommended) Server/workstation class CPUs with >=4 memory channels (e.g., AMD Threadripper 3955WX-9955WX, Intel i9-10900X, Xeon) can increase bandwidth over consumer CPUs with 2 memory channels (more cameras, higher resolution/frame rate).
+- (Recommended) High core count CPUs are not necessary, but generally >1 core per camera is recommended, as campy leverages one process per camera using multiprocessing for parallelism.
+- (Optional) USB expansion card with 1 host controller per camera (e.g., Basler USB 3.0, 4X PCIe, 4X HC, 4 Ports PN# 2000036233).
+- (Optional) Hardware encoder using AMD, Intel, or Nvidia GPU (see https://developer.nvidia.com/video-encode-decode-gpu-support-matrix).
+- (Optional) Arduino/Teensy/Pi microcontroller for syncing cameras and other devices.
 
 ## Installation
 1. Update graphics drivers
@@ -137,10 +138,10 @@ ffmpegPath: "/usr/bin/ffmpeg"
 ```
 
 ## Authors
-Written by Kyle Severson with contributions from Diego Aldarondo and Iris Odstrcil (2019-2021).
+Written by Kyle Severson with contributions from Diego Aldarondo and Iris Odstrcil.
 
 ## Credits
-Special thanks to Tim Dunn, David Hildebrand, Vincent Prevosto, Manuel Levy, and Paul Thompson for helpful comments.
+Special thanks to Stefan Oline, Tim Dunn, David Hildebrand, Vincent Prevosto, Manuel Levy, and Paul Thompson for helpful comments.
 
 ## License
 MIT License
