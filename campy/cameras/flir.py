@@ -110,7 +110,7 @@ def StartGrabbing(camera):
 
 
 def GrabFrame(camera, frameNumber):
-	image_result = camera.GetNextImage()
+	image_result = camera.GetNextImage(50) # timeout to wait for next frame, in ms
 
 	#  Ensure image completion
 	if image_result.IsIncomplete():
