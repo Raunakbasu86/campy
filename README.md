@@ -41,11 +41,21 @@ pip install -U setuptools
   ```
   pip3 install <wheel>
   ```
-4. Clone or download campy to local folder:
+4. Create a folder to clone campy:
+```
+cd ~\Documents\
+mkdir campy
+cd campy
+```
+5. Clone or download campy to local folder:
 ```
 git clone https://github.com/ksseverson57/campy.git
 ```
-5. Finally, install campy and its dependencies (see setup.py) by navigating to campy folder:
+6. Navigate to the cloned campy folder
+```
+cd campy
+```
+7. Finally, install campy and its dependencies (see setup.py):
 ```
 pip install -e .
 ```
