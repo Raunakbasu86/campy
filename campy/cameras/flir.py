@@ -64,6 +64,10 @@ def OpenCamera(cam_params):
 	# Initialize camera object
 	camera.Init()
 
+	# Reset to factory default settings
+	# camera.UserSetSelector.SetValue(PySpin.UserSetSelector_Default)
+	# camera.UserSetLoad()
+
 	# Retrieve TL device nodemap
 	nodemap_tldevice = camera.GetTLDeviceNodeMap()
 
@@ -106,7 +110,7 @@ def StartGrabbing(camera):
 
 
 def GrabFrame(camera, frameNumber):
-	image_result = camera.GetNextImage()
+	image_result = camera.GetNextImage(50) # timeout to wait for next frame, in ms
 
 	#  Ensure image completion
 	if image_result.IsIncomplete():
@@ -214,7 +218,12 @@ def ConfigureCustomImageSettings(camera, cam_params):
 		settingsConfig = True
 
 		camera.AcquisitionMode.SetValue(PySpin.AcquisitionMode_Continuous)
-		camera.BalanceWhiteAuto.SetValue(PySpin.BalanceWhiteAuto_Off)
+
+		# White Balance not supported for monochrome cameras
+		try:
+			camera.BalanceWhiteAuto.SetValue(PySpin.BalanceWhiteAuto_Off)
+		except:
+			print('Could not set white balance')
 
 		cam_params = ConfigureFrameWidth(camera, cam_params)
 		cam_params = ConfigureFrameHeight(camera, cam_params)

@@ -11,6 +11,7 @@ setup(
 					'pyserial',
 					'pyyaml',
 					'scikit-image',
+					'PyQt5',
 					],
 	entry_points={
 		"console_scripts": [
