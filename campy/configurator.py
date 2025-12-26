@@ -22,7 +22,7 @@ def DefaultParams():
 
 	# Camera default parameters
 	params["cameraMake"] = "basler"
-	params["cameraSettings"] = "None"
+	params["cameraSettings"] = []
 	params["frameWidth"] = 1152
 	params["frameHeight"] = 1024
 	params["cameraDebug"] = False
@@ -117,6 +117,8 @@ def ConfigureCamParams(systems, params, n_cam):
 	cam_params["n_cam"] = n_cam
 	cam_params["baseFolder"] = os.getcwd()
 	cam_params["cameraName"] = params["cameraNames"][n_cam]
+	cam_params["cameraSettings"] = params["cameraSettings"][n_cam]
+
 
 	cam_params = OptParams(cam_params)
 	cam_make = cam_params["cameraMake"]

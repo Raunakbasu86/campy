@@ -42,14 +42,14 @@ def OpenCamera(cam_params):
 
 	# Load default camera settings
 	cam_params['cameraModel'] = GetModelName(camera)
-	cam_params = LoadSettings(cam_params, camera)
+	cam_params = LoadSettings(cam_params, cam_params["cameraSettings"], camera)
 
 	return camera, cam_params
 
 
-def LoadSettings(cam_params, camera):
+def LoadSettings(cam_params, camera_setting, camera):
 	# Load settings from Pylon features file
-	pylon.FeaturePersistence.Load(cam_params['cameraSettings'], camera.GetNodeMap(), False) #Validation is false
+	pylon.FeaturePersistence.Load(camera_setting, camera.GetNodeMap(), False) #Validation is false
 	camera.MaxNumBuffer = cam_params["bufferSize"] # default bufferSize is ~500 frames
 
 	# Manual override settings
